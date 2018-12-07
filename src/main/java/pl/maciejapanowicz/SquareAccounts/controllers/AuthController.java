@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.maciejapanowicz.SquareAccounts.models.forms.RegisterForm;
 import pl.maciejapanowicz.SquareAccounts.models.services.AuthService;
 
-import javax.jws.WebParam;
-
 @Controller
 public class AuthController {
 
@@ -27,28 +25,34 @@ public class AuthController {
         return "login";
     }
 
+    @GetMapping ("/index")
+    public String index () {
+        return "login";
+    }
+
     @PostMapping("/login")
-    public String login (@RequestParam ("login") String login,
+    public String login (@RequestParam ("email") String email,
                          @RequestParam ("password") String password,
                          Model model) {
-       if (!authService.tryLogin(login, password)){
+       if (!authService.tryLogin(email, password)){
             model.addAttribute("infoAboutWrongLogin", "Login or Password incorrect!");
-           System.out.println("tu jestem");
             return "login";
        }
-
-        return "redirect:/";
+       return "redirect:/";
     }
 
     @GetMapping ("/register")
     public String register (Model model) {
-        model.addAttribute("registerForm",new RegisterForm());
+        model.addAttribute("registerForm", new RegisterForm());
         return "register";
     }
 
     @PostMapping ("/register")
-    public String register  (@ModelAttribute ("registerForm") RegisterForm registerForm){
-        //todo logika rejestracji
-        return "o";
+    public String register  (@ModelAttribute ("registerForm") RegisterForm registerForm, Model model){
+        model.addAttribute("infoAboutRegistration", "Sorry, this e-mail is not available");
+        if (!authService.tryRegister(registerForm)) {
+            return "/register";
+        }
+        return "redirect:/login";
     }
 }

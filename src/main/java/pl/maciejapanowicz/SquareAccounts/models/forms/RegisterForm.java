@@ -8,7 +8,7 @@ public class RegisterForm {
     private String emailRepeated;
     private String name;
     private String surname;
-    private String username;
+    private String login;
     private String password;
     private String passwordRepeated;
 }
