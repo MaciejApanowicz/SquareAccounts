@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>MaciejApanowicz/Registration</title>
+    <title>Sticngo/Rozliczajka</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
@@ -20,10 +20,9 @@
         <input th:field="*{password}" type="password" class="form-control"  placeholder="Password">
         <input th:field="*{passwordRepeated}" type="password" class="form-control"  placeholder="Password Repeated">
 
-        <button type="submit" class="btn btn-default">Register</button>
+        <button type="submit" class="btn btn-success">Register</button>
 
     </form>
-    <button onclick="window.href='/login'" class="btn btn-default">Cancel</button>
-</div>
+    <button onclick="javascript:location.href='/sticngo'" class="btn btn-default">Cancel</button></div>
 </body>
 </html>

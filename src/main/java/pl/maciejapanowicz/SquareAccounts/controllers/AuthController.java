@@ -20,7 +20,7 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @GetMapping ("/login")
+    @GetMapping ("/sticngo")
     public String login (){
         return "login";
     }
@@ -30,7 +30,7 @@ public class AuthController {
         return "login";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/sticngo")
     public String login (@RequestParam ("email") String email,
                          @RequestParam ("password") String password,
                          Model model) {
@@ -53,6 +53,6 @@ public class AuthController {
         if (!authService.tryRegister(registerForm)) {
             return "/register";
         }
-        return "redirect:/login";
+        return "redirect:/sticngo";
     }
 }
